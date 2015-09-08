@@ -22,7 +22,7 @@
                     <input type="submit" name="submit" value="Calculate" tabindex="3"/>
             <br>
         </form>
-        
-        <p>The Area of your rectangle is: ${area}</p>
+        </br>
+        <c:out>The Area of your rectangle is: ${area}</c:out>
     </body>    
 </html>

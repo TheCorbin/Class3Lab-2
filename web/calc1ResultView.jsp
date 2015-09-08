@@ -13,6 +13,6 @@
     </head>
     <body>
         <p>The area of your rectangle is:</p>
-        <p>${area}</p>
+        <c:out>${area}</c:out>
     </body>
 </html>

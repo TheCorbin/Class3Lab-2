@@ -41,6 +41,9 @@ public class calc3 extends HttpServlet {
         GeometricCalculator calculator = new GeometricCalculator();
         
         String calcType = request.getParameter("type"); 
+//        String location = "#" + request.getParameter("id");
+//        request.setAttribute("location", resultPage + location);
+        request.setAttribute("currentURL", resultPage);
         Double measurement = 0.0;
         
         switch (calcType){
@@ -62,6 +65,8 @@ public class calc3 extends HttpServlet {
                 request.setAttribute("triangleMeasurement", measurement);
                 break;
         }
+        
+        
         
         RequestDispatcher view = request.getRequestDispatcher(resultPage);
         view.forward(request, response);

@@ -7,12 +7,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <!--<button><c:redirect value="${location}"/></button>-->
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+    
+    
     <body>
-        <form id="form1" name="form1" Method="POST" action="calc3?type=rectangle">
+        <form id="form1" name="form1" Method="POST" action="calc3?type=rectangle&id=rectangle">
             <h1> Calculate the Area of a Rectangle</h1>
                     
                     <p>Length:</p>
@@ -23,9 +26,10 @@
             <br>
         </form>
         
-        <p> The area of your rectangle is: ${rectangleMeasurement}</p>
+        </br>
+       <c:out> The area of your rectangle is: ${rectangleMeasurement}</c:out>
         
-        <form id="form1" name="form1" Method="POST" action="calc3?type=circle">
+        <form id="form1" name="form1" Method="POST" action="calc3?type=circle&id=circle">
             <BR><h1> Calculate the Area of a circle:</h1>
                     
                     <p>Length:</p>
@@ -33,10 +37,14 @@
                     <input type="submit" name="submit" value="Calculate" tabindex="5"/>
             <br>
         </form>
+       
+       </br>
+       </br>
+       </br>
+       </br>
+        <c:out>The area of your circle is: ${circleMeasurement}</c:out>
         
-        <p> The area of your circle is: ${circleMeasurement}</p>
-        
-        <form id="form1" name="form1" Method="POST" action="calc3?type=triangle">
+        <form id="form1" name="form1" Method="POST" action="calc3?type=triangle&id=triangle">
             <BR><h1> Calculate the Area of a right triangle:</h1>
                     <p>Side1:</p>
                     <input type="text" name="side1" tabindex="6">
@@ -46,6 +54,7 @@
             <br>
         </form>
         
-        <p> The area of your triangle is: ${triangleMeasurement}</p>
+        </br>
+        <c:out>The area of your triangle is: ${triangleMeasurement}</c:out>
     </body>   
 </html>
