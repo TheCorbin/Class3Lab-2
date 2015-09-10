@@ -39,11 +39,9 @@ public class calc1 extends HttpServlet {
         
         GeometricCalculator calculator = new GeometricCalculator();
         
-        Integer width = Integer.parseInt(request.getParameter("width"));
-        Integer length = Integer.parseInt(request.getParameter("length"));
-        System.out.println("width");
-        System.out.println("length");
-        Integer area = calculator.rectangleAreaCalc(width, length);
+        String width = request.getParameter("width");
+        String length = request.getParameter("length");
+        Double area = calculator.rectangleAreaCalc(width, length);
         
         request.setAttribute("area", area);
         

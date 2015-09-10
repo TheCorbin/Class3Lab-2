@@ -8,6 +8,7 @@ package calc3;
 import Models.GeometricCalculator;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class calc3 extends HttpServlet {
     
     private static final String resultPage = "/calc3View.jsp";
+    private final ArrayList<String> measurements = new ArrayList<>();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,27 +48,31 @@ public class calc3 extends HttpServlet {
         request.setAttribute("currentURL", resultPage);
         Double measurement = 0.0;
         
+        
         switch (calcType){
             case "rectangle":
-                Integer width = Integer.parseInt(request.getParameter("width"));
-                Integer length = Integer.parseInt(request.getParameter("length"));
-                measurement = (double)calculator.rectangleAreaCalc(width, length);
+                String width = request.getParameter("width");
+                String length = request.getParameter("length");
+                measurement = calculator.rectangleAreaCalc(width, length);
                 request.setAttribute("rectangleMeasurement", measurement);
+                measurements.add("A rectangle with sides " + width + " and " + length + " has an area of " + measurement);
                 break;
             case "circle":
-                Double radius = Double.parseDouble(request.getParameter("radius"));
+                String radius = request.getParameter("radius");
                 measurement = calculator.circleAreaCalc(radius);
                 request.setAttribute("circleMeasurement", measurement);
+                measurements.add("A circle with a radius " + radius + " has an area of " + measurement);
                 break;
             case "triangle":
-                Double side1 = Double.parseDouble(request.getParameter("side1"));
-                Double side2 = Double.parseDouble(request.getParameter("side2"));
+                String side1 = request.getParameter("side1");
+                String side2 = request.getParameter("side2");
                 measurement = calculator.triangleCalc(side1, side2);
                 request.setAttribute("triangleMeasurement", measurement);
+                measurements.add("A triangle with sides " + side1 + " and " + side2 + " has an area of " + measurement);
                 break;
         }
         
-        
+        request.setAttribute("measurements", measurements);
         
         RequestDispatcher view = request.getRequestDispatcher(resultPage);
         view.forward(request, response);

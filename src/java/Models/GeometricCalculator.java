@@ -11,15 +11,20 @@ package Models;
  */
 public class GeometricCalculator {
     
-    public int rectangleAreaCalc(int width, int height){
-        return width * height;
+    public double rectangleAreaCalc(String width, String height){
+        double convertedWidth = Double.parseDouble(width);
+        double convertedHeight = Double.parseDouble(height);
+        return convertedWidth * convertedHeight;
     }
     
-    public double circleAreaCalc(double radius){
-        return Math.PI * (radius*radius);
+    public double circleAreaCalc(String radius){
+        double convertedRadius = Double.parseDouble(radius);
+        return Math.PI * (convertedRadius*convertedRadius);
     }
     
-    public double triangleCalc(double side1, double side2){
-        return (side1 * side2) /2;
+    public double triangleCalc(String side1, String side2){
+        double convertedSide1 = Double.parseDouble(side1);
+        double convertedSide2 = Double.parseDouble(side2);
+        return (convertedSide1 * convertedSide2)/2;
     }
 }
